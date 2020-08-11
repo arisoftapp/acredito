@@ -17,6 +17,7 @@ public class home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
          rsscalelabel.RSScaleLabel.setScaleLabel(img_clientes, "src/images/persona.png");
+          rsscalelabel.RSScaleLabel.setScaleLabel(img_logout, "src/images/logout.png");
     }
 
     /**
@@ -29,9 +30,11 @@ public class home extends javax.swing.JFrame {
     private void initComponents() {
 
         img_clientes = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        img_logout = new javax.swing.JLabel();
         btn_alta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        btn_alta1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -40,12 +43,10 @@ public class home extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(img_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 40, 30));
+        getContentPane().add(img_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 80, 80));
+        getContentPane().add(img_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 80, 80));
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 40, 200, 100));
-
-        btn_alta.setText("Alta de Clientes");
+        btn_alta.setText("Alta de Cliente");
         btn_alta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_alta.setMargin(new java.awt.Insets(2, 14, 15, 14));
         btn_alta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -54,10 +55,24 @@ public class home extends javax.swing.JFrame {
                 btn_altaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 40, 200, 100));
+        getContentPane().add(btn_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 200, 100));
 
         jButton3.setText("jButton1");
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 200, 100));
+
+        jButton2.setText("jButton1");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 40, 200, 100));
+
+        btn_alta1.setText("Cerrar Sesion");
+        btn_alta1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_alta1.setMargin(new java.awt.Insets(2, 14, 15, 14));
+        btn_alta1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_alta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alta1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_alta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 200, 100));
 
         jMenu1.setText("Clientes");
 
@@ -90,6 +105,13 @@ public class home extends javax.swing.JFrame {
         altaclientes vista=new altaclientes();
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btn_alta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alta1ActionPerformed
+        // TODO add your handling code here:
+           this.setVisible(false);
+        Login vista=new Login();
+        vista.setVisible(true);
+    }//GEN-LAST:event_btn_alta1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,8 +150,10 @@ public class home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alta;
+    private javax.swing.JButton btn_alta1;
     private javax.swing.JLabel img_clientes;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel img_logout;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

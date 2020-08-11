@@ -25,7 +25,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(pefil, "src/images/persona.png");
-         rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/images/fondo.jpg");
+        rsscalelabel.RSScaleLabel.setScaleLabel(login, "src/images/login.png");
+         //rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/images/fondo.jpg");
     }
 
     /**
@@ -38,6 +39,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         pefil = new javax.swing.JLabel();
+        login = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
@@ -54,9 +56,10 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pefil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pefil.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pefil.setName("perfil"); // NOI18N
         getContentPane().add(pefil, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 110, 100));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 80, 80));
 
         txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,12 +71,15 @@ public class Login extends javax.swing.JFrame {
 
         jButton1.setText("Iniciar Sesion");
         jButton1.setToolTipText("");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.setMargin(new java.awt.Insets(2, 14, 15, 14));
+        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 350, 150, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 100));
 
         jLabel1.setText("Usuario:");
         jLabel1.setToolTipText("");
@@ -100,6 +106,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+            //this.setVisible(false);
+  
         Thread t = new asynTaskLogin();
         t.start();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -107,6 +115,7 @@ public class Login extends javax.swing.JFrame {
     public void cambiarPantalla()
     {
         this.setVisible(false);
+
         home v_home=new home();
         v_home.setVisible(true);
     }
@@ -230,6 +239,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel label_info;
+    private javax.swing.JLabel login;
     private javax.swing.JLabel pefil;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables

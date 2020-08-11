@@ -1,3 +1,6 @@
+
+import javax.swing.JFileChooser;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +19,12 @@ public class altaclientes extends javax.swing.JFrame {
     public altaclientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+          rsscalelabel.RSScaleLabel.setScaleLabel(save, "src/images/save.png");
+          rsscalelabel.RSScaleLabel.setScaleLabel(back, "src/images/arrow.png");
+          rsscalelabel.RSScaleLabel.setScaleLabel(add, "src/images/plus.png");
+          jtp_main.setEnabledAt(1, false);
+          jtp_main.setEnabledAt(2, false);
+          
     }
 
     /**
@@ -27,8 +36,9 @@ public class altaclientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        jDialog1 = new javax.swing.JDialog();
+        jtp_main = new javax.swing.JTabbedPane();
+        jp_cliente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -41,57 +51,73 @@ public class altaclientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        back = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         tf_codigo = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        save = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jp_huella = new javax.swing.JPanel();
+        jp_doc = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        add = new javax.swing.JLabel();
+        btn_add = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane2.setPreferredSize(new java.awt.Dimension(700, 500));
+        jtp_main.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jp_cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("ID:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 20));
+        jp_cliente.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 20));
 
         jLabel3.setText("Nombre:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        jp_cliente.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         jTextField1.setToolTipText("");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
+        jp_cliente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
 
         jLabel4.setText("Apellido Paterno:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+        jp_cliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
 
         jLabel5.setText("Apellido Materno:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        jp_cliente.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
         jTextField2.setToolTipText("");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, -1));
+        jp_cliente.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, -1));
 
         jTextField3.setToolTipText("");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
+        jp_cliente.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
 
         jLabel6.setText("Puesto:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jp_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jTextField4.setToolTipText("");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 230, -1));
+        jp_cliente.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 230, -1));
 
         jLabel7.setText("Comentarios:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        jp_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 370, 110));
+        jp_cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 370, 110));
 
-        jButton1.setText("Guardar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 120, 60));
+        back.setText("jLabel2");
+        jp_cliente.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 30, 30));
+
+        jButton1.setText("Regresar");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jp_cliente.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 50, 50));
 
         tf_codigo.setToolTipText("Codigo ERP MacroPro");
         tf_codigo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -102,13 +128,48 @@ public class altaclientes extends javax.swing.JFrame {
                 tf_codigoKeyTyped(evt);
             }
         });
-        jPanel1.add(tf_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 210, -1));
+        jp_cliente.add(tf_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 210, -1));
+        jp_cliente.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 30, 30));
 
-        jTabbedPane2.addTab("Agregar Cliente", jPanel1);
-        jTabbedPane2.addTab("Agregar Huella", jPanel2);
-        jTabbedPane2.addTab("Ageregar Documentos", jPanel3);
+        jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jp_cliente.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 50, 50));
 
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        jtp_main.addTab("Agregar Cliente", jp_cliente);
+        jtp_main.addTab("Agregar Huella", jp_huella);
+
+        jp_doc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Descripcion"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jp_doc.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, 170));
+
+        add.setText("jLabel2");
+        jp_doc.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, 30));
+
+        btn_add.setText("jButton3");
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
+        jp_doc.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 50, 50));
+
+        jtp_main.addTab("Ageregar Documentos", jp_doc);
+
+        getContentPane().add(jtp_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,6 +185,42 @@ private int limite  = 10;
  
      evt.consume();
     }//GEN-LAST:event_tf_codigoKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        home v_home=new home();
+        v_home.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+          jtp_main.setEnabledAt(0, false);
+          jtp_main.setEnabledAt(1, true);
+          jtp_main.setEnabledAt(2, true);
+          jtp_main.setSelectedIndex(1);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        // TODO add your handling code here:
+         System.out.print("cargar");
+        try{
+                     JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+    fileChooser.showDialog(this, "cd");
+    
+        }catch(Exception e)
+        {
+            System.out.print(e);
+        }
+
+ 
+
+
+
+
+
+    }//GEN-LAST:event_btn_addActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,23 +258,31 @@ private int limite  = 10;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel add;
+    private javax.swing.JLabel back;
+    private javax.swing.JButton btn_add;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel jp_cliente;
+    private javax.swing.JPanel jp_doc;
+    private javax.swing.JPanel jp_huella;
+    private javax.swing.JTabbedPane jtp_main;
+    private javax.swing.JLabel save;
     private javax.swing.JTextField tf_codigo;
     // End of variables declaration//GEN-END:variables
 }
