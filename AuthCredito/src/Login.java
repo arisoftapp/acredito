@@ -3,15 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import complementos.consultasBD;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author antonio
@@ -21,12 +39,67 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form home
      */
+    consultasBD consultas=new consultasBD();
     public Login() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        rsscalelabel.RSScaleLabel.setScaleLabel(pefil, "src/images/persona.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(login, "src/images/login.png");
-         //rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/images/fondo.jpg");
+       
+            initComponents();
+                      this.setLocationRelativeTo(null);
+            rsscalelabel.RSScaleLabel.setScaleLabel(pefil, "src/images/persona.png");
+            rsscalelabel.RSScaleLabel.setScaleLabel(login, "src/images/login.png");
+           
+    }
+
+
+
+    public void Sesion()
+    {
+         try {
+            URL url = new URL("http://wsar.homelinux.com:3100/usuario/");//your url i.e fetch data from .
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Accept","application/json");
+            conn.setConnectTimeout(10000);
+            conn.setReadTimeout(10000);
+            conn.addRequestProperty("User-Agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            conn.setDoOutput(true);
+            conn.connect();
+            DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+            os.writeBytes(crearJsonLogin().toString());
+            os.flush();
+            os.close();
+  /*
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP Error code : "
+                        + conn.getResponseCode()+" "+conn.getResponseMessage());
+            }
+            */
+            System.out.print(conn.getResponseCode());
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line).append("\n");
+                }
+                String finalJSON = sb.toString();
+                JSONObject jObject = new JSONObject(finalJSON);
+                System.out.print(finalJSON);
+               if(jObject.getBoolean("success"))
+               {
+                   System.out.println(jObject.getBoolean("success"));
+                   cambiarPantalla();
+               }
+               else
+               {
+                   cuadroDialogo(jObject.getString("mensaje"));
+               }
+          
+            conn.disconnect();
+
+        } catch (IOException | JSONException e) {
+            System.err.println("Exception in NetClientGet:- " + e);
+          cuadroDialogo(e.getMessage());
+        }
     }
 
     /**
@@ -107,17 +180,31 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
             //this.setVisible(false);
-  
         Thread t = new asynTaskLogin();
         t.start();
+         //System.out.println(""+consultas.buscarPorUsuario(txt_usuario.getText().toString().trim()));
+        //insertBD("jesus","jalsdjalsk",false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+  private void cargarDriver() {
+    try {
+      Class.forName("com.mysql.jdbc.Driver");
+    }catch(Exception ex) {
+      setTitle(ex.toString());
+    }
+  }
+  
     public void cambiarPantalla()
     {
         this.setVisible(false);
-
         home v_home=new home();
         v_home.setVisible(true);
+    }
+        public class asynTaskSesion extends Thread
+    {
+        public void run()
+        {
+        // Código del hilo
+        }
     }
     public class asynTaskLogin extends Thread
 {
@@ -143,7 +230,9 @@ public class Login extends javax.swing.JFrame {
     }
     public void InciarSesion()
     {
-
+        boolean val=false;
+        String token="";
+        String ruta="";
          try {
             System.out.print(crearJsonLogin().toString());
             URL url = new URL("http://wsar.homelinux.com:3100/login");//your url i.e fetch data from .
@@ -160,12 +249,6 @@ public class Login extends javax.swing.JFrame {
             os.writeBytes(crearJsonLogin().toString());
             os.flush();
             os.close();
-  /*
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP Error code : "
-                        + conn.getResponseCode()+" "+conn.getResponseMessage());
-            }
-            */
             System.out.print(conn.getResponseCode());
                 BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
@@ -179,10 +262,13 @@ public class Login extends javax.swing.JFrame {
                if(jObject.getBoolean("success"))
                {
                    System.out.println(jObject.getBoolean("success"));
-                   cambiarPantalla();
+                   val=true;
+                   token=jObject.getString("token");
+                  ruta=jObject.getString("ruta");
                }
                else
                {
+                    
                    cuadroDialogo(jObject.getString("mensaje"));
                }
           
@@ -192,6 +278,25 @@ public class Login extends javax.swing.JFrame {
             System.err.println("Exception in NetClientGet:- " + e);
           cuadroDialogo(e.getMessage());
         }
+         if(val==true)
+         {
+             if(consultas.buscarPorUsuario(txt_usuario.getText().toString().trim())==true)
+             {
+                 consultas.update(txt_usuario.getText().trim(),token, val, ruta);
+             }
+             else
+             {
+                 consultas.insertBD(txt_usuario.getText().toString().trim(), token, true,ruta);
+             }
+             
+             //setPropertyValue("usuario",txt_usuario.getText().toString());
+             //
+            cambiarPantalla();
+         }
+         else
+         {
+             val=false;
+         }
     }
     public void cuadroDialogo(String mensaje)
     {
@@ -201,6 +306,7 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+     
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -226,10 +332,41 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+       
             public void run() {
-                new Login().setVisible(true);
+          boolean validar=false;
+              try {
+          Connection conexion=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/credito","root" ,"");
+          Statement comando=(Statement) conexion.createStatement();
+          ResultSet registro = comando.executeQuery("select * from usuario");
+	  if (registro.next()==true) {
+            System.out.println(registro.getString("nom_usuario"));
+            validar=true;
+             System.out.println("encontro");
+	  } else {
+	  validar=false;
+          System.out.println("no encontro");
+	  }
+          conexion.close();
+         
+        } catch(SQLException ex){
+             validar=false;
+          System.out.println("error:"+ex);
+        }
+        
+              if(validar==true)
+              {
+                       new home().setVisible(true);
+              }
+              else
+              {
+                       new Login().setVisible(true);
+              }
+           
+                  
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

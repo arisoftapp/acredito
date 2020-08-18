@@ -1,3 +1,12 @@
+
+import complementos.consultasApi;
+import complementos.consultasBD;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +26,11 @@ public class home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
          rsscalelabel.RSScaleLabel.setScaleLabel(img_clientes, "src/images/persona.png");
-          rsscalelabel.RSScaleLabel.setScaleLabel(img_logout, "src/images/logout.png");
+         //rsscalelabel.RSScaleLabel.setScaleLabel(img_clientes,"");
+        
+         rsscalelabel.RSScaleLabel.setScaleLabel(img_logout, "src/images/logout.png");
+          usuario=consultasBD.getUsuario();
+          System.out.println(usuario);
     }
 
     /**
@@ -34,12 +47,12 @@ public class home extends javax.swing.JFrame {
         btn_alta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btn_alta1 = new javax.swing.JButton();
+        btn_cerrarsesion = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,22 +70,32 @@ public class home extends javax.swing.JFrame {
         });
         getContentPane().add(btn_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 200, 100));
 
-        jButton3.setText("jButton1");
+        jButton3.setText("Modificar Cliente");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 200, 100));
 
         jButton2.setText("jButton1");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 40, 200, 100));
-
-        btn_alta1.setText("Cerrar Sesion");
-        btn_alta1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btn_alta1.setMargin(new java.awt.Insets(2, 14, 15, 14));
-        btn_alta1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_alta1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_alta1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_alta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 200, 100));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 40, 200, 100));
+
+        btn_cerrarsesion.setText("Cerrar Sesion");
+        btn_cerrarsesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_cerrarsesion.setMargin(new java.awt.Insets(2, 14, 15, 14));
+        btn_cerrarsesion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_cerrarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrarsesionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 200, 100));
 
         jMenu1.setText("Clientes");
 
@@ -94,24 +117,68 @@ public class home extends javax.swing.JFrame {
 
     private void btn_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        altaclientes vista=new altaclientes();
+        //this.setVisible(false);
+        AltaClientes vista=new AltaClientes();
         vista.setVisible(true);
     }//GEN-LAST:event_btn_altaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        altaclientes vista=new altaclientes();
+        //this.setVisible(false);
+        AltaClientes vista=new AltaClientes();
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void btn_alta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alta1ActionPerformed
+    private void btn_cerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarsesionActionPerformed
         // TODO add your handling code here:
-           this.setVisible(false);
-        Login vista=new Login();
+        Thread t = new home.at_cerrar();
+            t.start();
+        try {
+            t.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                System.out.println("despues de tret");
+                if(consultasBD.tablaVacia())
+                {
+                        this.setVisible(false);
+                       Login vista=new Login();
+                vista.setVisible(true);
+                }
+     
+        
+ 
+ 
+    }//GEN-LAST:event_btn_cerrarsesionActionPerformed
+
+    public class at_cerrar extends Thread
+    {
+        public void run()
+        {
+            System.out.println("inicio tret");
+            if(consultasApi.CerrarSesion(usuario))
+            {
+                consultasBD.deleteUserLogout();
+            }
+            
+        }
+
+
+    }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+       //this.setVisible(false);
+        modificarCliente vista=new modificarCliente();
         vista.setVisible(true);
-    }//GEN-LAST:event_btn_alta1ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //this.setVisible(false);
+        validarHuella v_vh=new validarHuella();
+        v_vh.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +214,14 @@ public class home extends javax.swing.JFrame {
             }
         });
     }
+    //variables
+    consultasApi consultasApi=new consultasApi();
+    consultasBD consultasBD=new consultasBD();
+    String usuario="";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alta;
-    private javax.swing.JButton btn_alta1;
+    private javax.swing.JButton btn_cerrarsesion;
     private javax.swing.JLabel img_clientes;
     private javax.swing.JLabel img_logout;
     private javax.swing.JButton jButton2;
