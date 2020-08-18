@@ -29,12 +29,12 @@ import org.json.JSONObject;
  *
  * @author antonio
  */
-public class altaclientes2 extends javax.swing.JFrame {
+public class AltaClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form altaclientes
      */
-    public altaclientes2() {
+    public AltaClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
           rsscalelabel.RSScaleLabel.setScaleLabel(save, "src/images/save.png");
@@ -55,8 +55,8 @@ public class altaclientes2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jtp_main = new javax.swing.JTabbedPane();
-        jp_cliente = new javax.swing.JPanel();
+        btn_add = new javax.swing.JButton();
+        add = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txt_materno = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -73,29 +73,24 @@ public class altaclientes2 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
-        jp_huella = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txt_codigo_huella = new javax.swing.JTextField();
-        jp_doc = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        txt_codigo_doc = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla_datos = new javax.swing.JTable();
-        btn_add = new javax.swing.JButton();
-        add = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtp_main.setPreferredSize(new java.awt.Dimension(700, 500));
+        btn_add.setText("jButton3");
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 50, 50));
 
-        jp_cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add.setText("jLabel2");
+        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 30, 30));
 
         jLabel3.setText("Nombre:");
-        jp_cliente.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         txt_materno.setToolTipText("");
         txt_materno.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -103,13 +98,13 @@ public class altaclientes2 extends javax.swing.JFrame {
                 txt_maternoKeyReleased(evt);
             }
         });
-        jp_cliente.add(txt_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
+        getContentPane().add(txt_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
 
         jLabel4.setText("Apellido Paterno:");
-        jp_cliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
 
         jLabel5.setText("Apellido Materno:");
-        jp_cliente.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
         txt_nombre.setToolTipText("");
         txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -117,7 +112,7 @@ public class altaclientes2 extends javax.swing.JFrame {
                 txt_nombreKeyReleased(evt);
             }
         });
-        jp_cliente.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, -1));
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 230, -1));
 
         txt_paterno.setToolTipText("");
         txt_paterno.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -125,10 +120,10 @@ public class altaclientes2 extends javax.swing.JFrame {
                 txt_paternoKeyReleased(evt);
             }
         });
-        jp_cliente.add(txt_paterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
+        getContentPane().add(txt_paterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 180, -1));
 
         jLabel6.setText("Puesto:");
-        jp_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         txt_puesto.setToolTipText("");
         txt_puesto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -136,10 +131,10 @@ public class altaclientes2 extends javax.swing.JFrame {
                 txt_puestoKeyReleased(evt);
             }
         });
-        jp_cliente.add(txt_puesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 230, -1));
+        getContentPane().add(txt_puesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 230, -1));
 
         jLabel7.setText("Comentarios:");
-        jp_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         txt_comentarios.setColumns(20);
         txt_comentarios.setRows(5);
@@ -150,8 +145,8 @@ public class altaclientes2 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(txt_comentarios);
 
-        jp_cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 370, 110));
-        jp_cliente.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 30, 30));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 370, 110));
+        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 30, 30));
 
         btn_guardar_cliente.setText("Guardar");
         btn_guardar_cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +154,7 @@ public class altaclientes2 extends javax.swing.JFrame {
                 btn_guardar_clienteActionPerformed(evt);
             }
         });
-        jp_cliente.add(btn_guardar_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 50, 50));
+        getContentPane().add(btn_guardar_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 50, 50));
 
         jLabel1.setText("ID:");
         jPanel3.add(jLabel1);
@@ -176,63 +171,7 @@ public class altaclientes2 extends javax.swing.JFrame {
         });
         jPanel3.add(txt_codigo);
 
-        jp_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 40));
-
-        jtp_main.addTab("Agregar Cliente", jp_cliente);
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(700, 30));
-
-        jLabel2.setText("ID:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(15, 20));
-        jPanel2.add(jLabel2);
-
-        txt_codigo_huella.setEnabled(false);
-        txt_codigo_huella.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel2.add(txt_codigo_huella);
-
-        jp_huella.add(jPanel2);
-
-        jtp_main.addTab("Agregar Huella", jp_huella);
-
-        jp_doc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(700, 30));
-
-        jLabel8.setText("ID:");
-        jPanel1.add(jLabel8);
-
-        txt_codigo_doc.setEnabled(false);
-        txt_codigo_doc.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel1.add(txt_codigo_doc);
-
-        jp_doc.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        tabla_datos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Descripcion"
-            }
-        ));
-        jScrollPane2.setViewportView(tabla_datos);
-
-        jp_doc.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, 170));
-
-        btn_add.setText("jButton3");
-        btn_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addActionPerformed(evt);
-            }
-        });
-        jp_doc.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 50, 50));
-
-        add.setText("jLabel2");
-        jp_doc.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 30, 30));
-
-        jtp_main.addTab("Ageregar Documentos", jp_doc);
-
-        getContentPane().add(jtp_main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,7 +219,7 @@ private int limite  = 10;
                       else
                       {
                         validar=true;
-                        Thread t = new altaclientes2.atInsertCliente();
+                        Thread t = new AltaClientes.atInsertCliente();
                         t.start();
                       }
                   }
@@ -352,12 +291,7 @@ private int limite  = 10;
         }
          if(validar==true)
          {
-          //jtp_main.setEnabledAt(0, false);
-          //jtp_main.setEnabledAt(1, true);
-          //jtp_main.setEnabledAt(2, true);
-          jtp_main.setSelectedIndex(1);
-          txt_codigo_doc.setText(txt_codigo.getText());
-          txt_codigo_huella.setText(txt_codigo.getText());
+
           desactivarCompClientes();
          }
          
@@ -397,7 +331,14 @@ private int limite  = 10;
     
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-        FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+
+        
+    }//GEN-LAST:event_btn_addActionPerformed
+
+    public void getfoto()
+    {
+        /*
+                FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
         Object [] fila=new Object[2]; 
         DefaultTableModel modelo=(DefaultTableModel) tabla_datos.getModel();
         //Creamos el objeto JFileChooser
@@ -426,13 +367,13 @@ private int limite  = 10;
                 e1.printStackTrace();
               }
             */
-              modelo.addRow(fila);
-              tabla_datos.setModel(modelo);
+              //modelo.addRow(fila);
+              //tabla_datos.setModel(modelo);
               
-        }
+              
+        //}
         
-    }//GEN-LAST:event_btn_addActionPerformed
-
+    }
     private void txt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyReleased
         // TODO add your handling code here:
         txt_nombre.setText(txt_nombre.getText().toUpperCase());
@@ -475,21 +416,23 @@ private int limite  = 10;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(altaclientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AltaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(altaclientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AltaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(altaclientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AltaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(altaclientes2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AltaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new altaclientes2().setVisible(true);
+                new AltaClientes().setVisible(true);
             }
         });
     }
@@ -502,27 +445,15 @@ private int limite  = 10;
     private javax.swing.JButton btn_guardar_cliente;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPanel jp_cliente;
-    private javax.swing.JPanel jp_doc;
-    private javax.swing.JPanel jp_huella;
-    private javax.swing.JTabbedPane jtp_main;
     private javax.swing.JLabel save;
-    private javax.swing.JTable tabla_datos;
     private javax.swing.JTextField txt_codigo;
-    private javax.swing.JTextField txt_codigo_doc;
-    private javax.swing.JTextField txt_codigo_huella;
     private javax.swing.JTextArea txt_comentarios;
     private javax.swing.JTextField txt_materno;
     private javax.swing.JTextField txt_nombre;
