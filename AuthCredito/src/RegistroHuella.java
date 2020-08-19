@@ -27,6 +27,15 @@ public class RegistroHuella extends javax.swing.JFrame {
          rsscalelabel.RSScaleLabel.setScaleLabel(lbl_huella3, "src/images/huella-dactilar.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lbl_huella4, "src/images/huella-dactilar.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lbl_huella5, "src/images/huella-dactilar.png");
+         jPanel1.setVisible(false);
+    }
+    public void desactivarComp()
+    {
+        txt_comentarios.setEnabled(false);
+        txt_materno.setEnabled(false);
+        txt_paterno.setEnabled(false);
+        txt_nombre.setEnabled(false);
+        
     }
 
     /**
@@ -41,15 +50,19 @@ public class RegistroHuella extends javax.swing.JFrame {
         rb_group = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_paterno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txt_materno = new javax.swing.JTextField();
+        btn_guardar_aut = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_comentarios = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         lbl_foto = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -72,6 +85,8 @@ public class RegistroHuella extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_Area = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 500));
@@ -83,16 +98,38 @@ public class RegistroHuella extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nombre:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 20, 150, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 150, -1));
 
         jLabel2.setText("Apellido Paterno:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 150, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        jPanel2.add(txt_paterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 150, -1));
 
         jLabel3.setText("Apellido Materno:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, -1, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 150, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(txt_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 150, -1));
+
+        btn_guardar_aut.setText("ok");
+        btn_guardar_aut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar_autActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_guardar_aut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 60, 50));
+
+        txt_comentarios.setColumns(20);
+        txt_comentarios.setRows(5);
+        jScrollPane2.setViewportView(txt_comentarios);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 230, 60));
+
+        jLabel9.setText("Comentarios:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 150));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(0, 300));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setText("foto");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -100,33 +137,22 @@ public class RegistroHuella extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 60, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 60, 40));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lbl_foto, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lbl_foto, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 82, 82));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 200));
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 300));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 82, 82));
 
         jButton1.setText("ok");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 70, 40));
@@ -235,7 +261,13 @@ public class RegistroHuella extends javax.swing.JFrame {
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 70));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 201, 600, 300));
+        txt_Area.setColumns(20);
+        txt_Area.setRows(5);
+        jScrollPane1.setViewportView(txt_Area);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 290, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 151, 600, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -255,6 +287,12 @@ public class RegistroHuella extends javax.swing.JFrame {
             rsscalelabel.RSScaleLabel.setScaleLabel(lbl_foto, fichero.getAbsolutePath());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_guardar_autActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_autActionPerformed
+        // TODO add your handling code here:
+        jPanel1.setVisible(true);
+        desactivarComp();
+    }//GEN-LAST:event_btn_guardar_autActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,6 +330,7 @@ public class RegistroHuella extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_guardar_aut;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -303,6 +342,7 @@ public class RegistroHuella extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -316,9 +356,8 @@ public class RegistroHuella extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lbl_huella1;
     private javax.swing.JLabel lbl_huella2;
@@ -326,5 +365,10 @@ public class RegistroHuella extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_huella4;
     private javax.swing.JLabel lbl_huella5;
     private javax.swing.ButtonGroup rb_group;
+    private javax.swing.JTextArea txt_Area;
+    private javax.swing.JTextArea txt_comentarios;
+    private javax.swing.JTextField txt_materno;
+    private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_paterno;
     // End of variables declaration//GEN-END:variables
 }

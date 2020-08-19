@@ -55,8 +55,10 @@ public class AltaClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        btn_add = new javax.swing.JButton();
         add = new javax.swing.JLabel();
+        save = new javax.swing.JLabel();
+        btn_add = new javax.swing.JButton();
+        btn_guardar_cliente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_materno = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -68,8 +70,6 @@ public class AltaClientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_comentarios = new javax.swing.JTextArea();
-        save = new javax.swing.JLabel();
-        btn_guardar_cliente = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
@@ -78,16 +78,25 @@ public class AltaClientes extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        add.setText("jLabel2");
+        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 30, 30));
+        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 30, 30));
+
         btn_add.setText("jButton3");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 50, 50));
+        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 50, 50));
 
-        add.setText("jLabel2");
-        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 30, 30));
+        btn_guardar_cliente.setText("Guardar");
+        btn_guardar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar_clienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_guardar_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 50, 50));
 
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
@@ -101,10 +110,10 @@ public class AltaClientes extends javax.swing.JFrame {
         getContentPane().add(txt_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
 
         jLabel4.setText("Apellido Paterno:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
         jLabel5.setText("Apellido Materno:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
         txt_nombre.setToolTipText("");
         txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -134,7 +143,7 @@ public class AltaClientes extends javax.swing.JFrame {
         getContentPane().add(txt_puesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 230, -1));
 
         jLabel7.setText("Comentarios:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         txt_comentarios.setColumns(20);
         txt_comentarios.setRows(5);
@@ -146,15 +155,6 @@ public class AltaClientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txt_comentarios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 370, 110));
-        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 30, 30));
-
-        btn_guardar_cliente.setText("Guardar");
-        btn_guardar_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardar_clienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_guardar_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 50, 50));
 
         jLabel1.setText("ID:");
         jPanel3.add(jLabel1);
@@ -331,7 +331,8 @@ private int limite  = 10;
     
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-
+        RegistroHuella vista=new RegistroHuella();
+        vista.setVisible(true);
         
     }//GEN-LAST:event_btn_addActionPerformed
 
