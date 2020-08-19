@@ -18,8 +18,10 @@ public class RegistroHuella extends javax.swing.JFrame {
     /**
      * Creates new form RegistroHuella
      */
+    public static String param;
     public RegistroHuella() {
         initComponents();
+        System.out.println(param);
          this.setLocationRelativeTo(null);
          rsscalelabel.RSScaleLabel.setScaleLabel(lbl_foto, "src/images/camera.png");
          rsscalelabel.RSScaleLabel.setScaleLabel(lbl_huella1, "src/images/huella-dactilar.png");

@@ -331,50 +331,15 @@ private int limite  = 10;
     
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-        RegistroHuella vista=new RegistroHuella();
+     RegistroHuella vista = null;
+        vista.param=txt_codigo.getText().toString().trim();
+         vista=new RegistroHuella();
+       
         vista.setVisible(true);
         
     }//GEN-LAST:event_btn_addActionPerformed
 
-    public void getfoto()
-    {
-        /*
-                FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
-        Object [] fila=new Object[2]; 
-        DefaultTableModel modelo=(DefaultTableModel) tabla_datos.getModel();
-        //Creamos el objeto JFileChooser
-        JFileChooser fc=new JFileChooser();
-         fc.setFileFilter(filtroImagen);
-        //Abrimos la ventana, guardamos la opcion seleccionada por el usuario
-        int seleccion=fc.showOpenDialog(this);
-        //Si el usuario, pincha en aceptar
-        if(seleccion==JFileChooser.APPROVE_OPTION){
-            //Seleccionamos el fichero
-            File fichero=fc.getSelectedFile();
-             //Ecribe la ruta del fichero seleccionado en el campo de texto
-            fila[0]=fichero.getAbsolutePath();
-            fila[1]=fichero.getName();
-            /*
-              try(FileReader fr=new FileReader(fichero)){
-              String cadena="";
-              int valor=fr.read();
-              while(valor!=-1){
-                cadena=cadena+(char)valor;
-                valor=fr.read();
-              }
-                  fila[1]=cadena;
-                  System.out.println(cadena);
-              } catch (IOException e1) {
-                e1.printStackTrace();
-              }
-            */
-              //modelo.addRow(fila);
-              //tabla_datos.setModel(modelo);
-              
-              
-        //}
-        
-    }
+ 
     private void txt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyReleased
         // TODO add your handling code here:
         txt_nombre.setText(txt_nombre.getText().toUpperCase());
